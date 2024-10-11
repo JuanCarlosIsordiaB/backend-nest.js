@@ -8,11 +8,14 @@ async function main() {
   app.useGlobalPipes(
     new ValidationPipe({ // valida los dtos
       
-      whitelist: true, // quita la data que llega y que no necesitamos
+      whitelist: true, // limpia la data que no corresponde al dto
       forbidNonWhitelisted: true, // si hay un campo que no es parte del dto, lo rechaza
       transform: true // 
     })
   )
+
+  app.enableCors(); // habilita cors
+
   await app.listen(3000);
 }
 main();
